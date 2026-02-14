@@ -10,7 +10,7 @@ body {
   margin: 0;
   height: 100vh;
   overflow: hidden;
-  font-family: 'Poppins', sans-serif;
+  font-family: Arial, sans-serif;
   background: linear-gradient(135deg, #ff758c, #ff7eb3, #ffc3a0);
   display: flex;
   justify-content: center;
@@ -20,28 +20,14 @@ body {
 }
 
 .container {
-  padding: 20px;
-  z-index: 2;
   max-width: 600px;
-}
-
-h1 {
-  font-size: 2.3rem;
-  margin-bottom: 15px;
-  animation: fadeIn 2s ease-in-out;
+  padding: 20px;
 }
 
 .name {
   font-size: 3rem;
   font-weight: bold;
   text-shadow: 0 0 15px #fff, 0 0 30px #ff4d6d;
-}
-
-.message {
-  font-size: 1.1rem;
-  line-height: 1.6;
-  margin-bottom: 25px;
-  opacity: 0.95;
 }
 
 button {
@@ -72,11 +58,6 @@ button {
   position: absolute;
 }
 
-@keyframes fadeIn {
-  from {opacity:0; transform: translateY(-20px);}
-  to {opacity:1; transform: translateY(0);}
-}
-
 .heart {
   position: absolute;
   font-size: 20px;
@@ -98,15 +79,10 @@ button {
     <span class="name">Imup</span>? 💌
   </h1>
 
-  <div class="message">
-    Imup, dari sekian banyak hal indah di dunia ini,  
-    kamu adalah yang paling sederhana tapi paling berarti buat aku.  
-    Senyum kamu bikin hari biasa terasa spesial,  
-    dan kehadiran kamu bikin semuanya terasa lebih hangat.  
-    <br><br>
-    Jadi hari ini aku cuma mau tanya satu hal kecil...  
-    mau nggak kamu jadi Valentine aku? 💖
-  </div>
+  <p>
+    Imup, kamu bikin hari biasa jadi luar biasa.<br>
+    Senyum kamu itu alasan kenapa aku senyum juga 💖
+  </p>
 
   <div>
     <button id="yesBtn">YES 💖</button>
@@ -126,23 +102,35 @@ noBtn.addEventListener("mouseover", () => {
 
 document.getElementById("yesBtn").addEventListener("click", () => {
   const container = document.querySelector(".container");
-  container.innerHTML = `
-    <h1 style="font-size:2.5rem;">
-      YAY IMUP 💖✨<br><br>
-      Kamu bikin aku senyum terus hari ini 🥰  
-      Makasih udah bilang YES 💕
-    </h1>
-  `;
-});
 
-  <div style="display:flex;justify-content:center;align-items:center;height:100vh;background:linear-gradient(135deg,#ff758c,#ff7eb3);text-align:center;color:white;padding:20px;">
-    <h1 style="font-size:2.5rem;">
-      YAY IMUP 💖✨<br><br>
-      Kamu baru saja bikin aku jadi orang paling bahagia hari ini 🥰  
-      Makasih udah bilang YES 💕
-    </h1>
-  </div>
+  container.innerHTML = `
+    <h1 style="font-size:2.5rem;">YAY IMUP 💖✨</h1>
+    <p style="font-size:1.2rem; margin-top:15px;">
+      Kamu bikin aku jadi orang paling bahagia hari ini 🥰
+    </p>
   `;
+
+  setTimeout(() => {
+    container.innerHTML += `
+      <p style="margin-top:20px; font-size:1.1rem;">
+        Semoga ini jadi awal dari banyak momen manis bareng ya 💕<br>
+        Kamu spesial banget buat aku, Imup 🤍
+      </p>
+      <button id="hugBtn" style="margin-top:20px; padding:12px 25px; border:none; border-radius:30px; background:white; color:#ff4d6d; font-weight:bold; cursor:pointer;">
+        Peluk aku 🤍
+      </button>
+    `;
+
+    document.getElementById("hugBtn").addEventListener("click", () => {
+      container.innerHTML = `
+        <h1 style="font-size:2.5rem;">
+          Virtual Hug For Imup 🤗💖<br><br>
+          🤍🤍🤍🤍🤍
+        </h1>
+      `;
+    });
+
+  }, 2000);
 });
 
 function createHeart() {
@@ -160,4 +148,3 @@ setInterval(createHeart, 400);
 
 </body>
 </html>
-
