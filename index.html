@@ -1,155 +1,139 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>For Imup 💖</title>
 
 <style>
-body {
-  margin: 0;
-  height: 100vh;
-  overflow: hidden;
-  font-family: Arial, sans-serif;
-  background: linear-gradient(135deg, #ff758c, #ff7eb3, #ffc3a0);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  color: white;
+body{
+margin:0;
+height:100vh;
+overflow:hidden;
+font-family:Arial;
+background:linear-gradient(135deg,#ff758c,#ff7eb3,#ffc3a0);
+display:flex;
+justify-content:center;
+align-items:center;
+text-align:center;
+color:white;
 }
 
-.container {
-  max-width: 600px;
-  padding: 20px;
+.container{
+max-width:600px;
+padding:20px;
 }
 
-.name {
-  font-size: 3rem;
-  font-weight: bold;
-  text-shadow: 0 0 15px #fff, 0 0 30px #ff4d6d;
+.name{
+font-size:3rem;
+font-weight:bold;
+text-shadow:0 0 15px white;
 }
 
-button {
-  padding: 12px 28px;
-  font-size: 18px;
-  border: none;
-  border-radius: 40px;
-  margin: 10px;
-  cursor: pointer;
-  transition: 0.3s;
+button{
+padding:12px 25px;
+font-size:18px;
+border:none;
+border-radius:30px;
+margin:10px;
+cursor:pointer;
 }
 
-#yesBtn {
-  background: white;
-  color: #ff4d6d;
-  font-weight: bold;
+#yesBtn{
+background:white;
+color:#ff4d6d;
+font-weight:bold;
 }
 
-#yesBtn:hover {
-  transform: scale(1.15);
-  box-shadow: 0 0 25px white;
+#noBtn{
+background:transparent;
+border:2px solid white;
+color:white;
+position:absolute;
 }
 
-#noBtn {
-  background: transparent;
-  border: 2px solid white;
-  color: white;
-  position: absolute;
+.heart{
+position:absolute;
+font-size:20px;
+animation:float 6s linear infinite;
 }
 
-.heart {
-  position: absolute;
-  font-size: 20px;
-  animation: float 6s linear infinite;
-}
-
-@keyframes float {
-  from {transform: translateY(100vh);}
-  to {transform: translateY(-10vh);}
+@keyframes float{
+from{transform:translateY(100vh);}
+to{transform:translateY(-10vh);}
 }
 </style>
 </head>
 
 <body>
 
-<!-- 🎵 LANY - ILYSB Auto Play -->
-<iframe width="0" height="0"
-src="https://www.youtube.com/embed/brmnrATVUp4?autoplay=1&loop=1&playlist=brmnrATVUp4"
-frameborder="0" allow="autoplay"></iframe>
+<audio id="bgMusic" src="music.mp3"></audio>
 
 <div class="container">
-  <h1>
-    Will you be my Valentine, <br>
-    <span class="name">Imup</span>? 💌
-  </h1>
+<h1>Will you be my Valentine,<br>
+<span class="name">Imup</span>? 💌</h1>
 
-  <p>
-    Imup, dari semua hal indah di dunia ini,  
-    kamu yang paling bikin aku jatuh hati pelan-pelan 💖  
-    Senyum kamu itu alasan kenapa hari aku terasa lengkap.
-  </p>
+<p>
+Imup, kamu itu alasan kenapa aku senyum sendiri tiap hari 💖
+</p>
 
-  <div>
-    <button id="yesBtn">YES 💖</button>
-    <button id="noBtn">NO 😭</button>
-  </div>
+<button id="yesBtn">YES 💖</button>
+<button id="noBtn">NO 😭</button>
 </div>
 
 <script>
-const noBtn = document.getElementById("noBtn");
 
-noBtn.addEventListener("mouseover", () => {
-  const x = Math.random() * (window.innerWidth - 100);
-  const y = Math.random() * (window.innerHeight - 50);
-  noBtn.style.left = x + "px";
-  noBtn.style.top = y + "px";
+const music = document.getElementById("bgMusic");
+
+const noBtn=document.getElementById("noBtn");
+noBtn.addEventListener("mouseover",()=>{
+noBtn.style.left=Math.random()*80+"vw";
+noBtn.style.top=Math.random()*80+"vh";
 });
 
-document.getElementById("yesBtn").addEventListener("click", () => {
-  const container = document.querySelector(".container");
+document.getElementById("yesBtn").addEventListener("click",()=>{
+music.play(); // Musik pasti bunyi setelah klik
 
-  container.innerHTML = `
-    <h1 style="font-size:2.5rem;">YAY IMUP 💖✨</h1>
-    <p style="font-size:1.2rem; margin-top:15px;">
-      Kamu baru aja bikin aku jadi orang paling bahagia hari ini 🥰
-    </p>
-  `;
+const container=document.querySelector(".container");
 
-  setTimeout(() => {
-    container.innerHTML += `
-      <p style="margin-top:20px; font-size:1.1rem;">
-        Semoga ini jadi awal dari cerita manis kita 🤍  
-        Aku nggak butuh yang sempurna, aku cuma butuh kamu, Imup 💕
-      </p>
-      <button id="hugBtn" style="margin-top:20px; padding:12px 25px; border:none; border-radius:30px; background:white; color:#ff4d6d; font-weight:bold; cursor:pointer;">
-        Peluk aku 🤍
-      </button>
-    `;
+container.innerHTML=`
+<h1>YAY IMUP 💖</h1>
+<p>Kamu bikin dunia aku lebih berwarna 🥰</p>
+`;
 
-    document.getElementById("hugBtn").addEventListener("click", () => {
-      container.innerHTML = `
-        <h1 style="font-size:2.5rem;">
-          Virtual Hug For Imup 🤗💖<br><br>
-          🤍🤍🤍🤍🤍
-        </h1>
-      `;
-    });
+setTimeout(()=>{
+container.innerHTML+=`
+<p style="margin-top:15px;">
+Aku nggak mau cuma valentine-an hari ini aja...
+Aku mau sama kamu lebih lama 🤍
+</p>
+<button id="hugBtn">Peluk aku 🤍</button>
+`;
 
-  }, 2000);
+document.getElementById("hugBtn").addEventListener("click",()=>{
+container.innerHTML=`
+<h1>Virtual Hug 🤗💖</h1>
+<p>
+Terima kasih udah jadi Imup yang manis ✨<br>
+Semoga ini jadi awal cerita kita ya 🤍
+</p>
+`;
 });
 
-function createHeart() {
-  const heart = document.createElement("div");
-  heart.classList.add("heart");
-  heart.innerHTML = "💖";
-  heart.style.left = Math.random() * 100 + "vw";
-  heart.style.fontSize = Math.random() * 25 + 15 + "px";
-  document.body.appendChild(heart);
-  setTimeout(() => heart.remove(), 6000);
+},2000);
+});
+
+function createHeart(){
+const heart=document.createElement("div");
+heart.classList.add("heart");
+heart.innerHTML="💖";
+heart.style.left=Math.random()*100+"vw";
+heart.style.fontSize=Math.random()*25+15+"px";
+document.body.appendChild(heart);
+setTimeout(()=>heart.remove(),6000);
 }
+setInterval(createHeart,400);
 
-setInterval(createHeart, 400);
 </script>
 
 </body>
