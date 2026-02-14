@@ -125,7 +125,16 @@ noBtn.addEventListener("mouseover", () => {
 });
 
 document.getElementById("yesBtn").addEventListener("click", () => {
-  document.body.innerHTML = `
+  const container = document.querySelector(".container");
+  container.innerHTML = `
+    <h1 style="font-size:2.5rem;">
+      YAY IMUP 💖✨<br><br>
+      Kamu bikin aku senyum terus hari ini 🥰  
+      Makasih udah bilang YES 💕
+    </h1>
+  `;
+});
+
   <div style="display:flex;justify-content:center;align-items:center;height:100vh;background:linear-gradient(135deg,#ff758c,#ff7eb3);text-align:center;color:white;padding:20px;">
     <h1 style="font-size:2.5rem;">
       YAY IMUP 💖✨<br><br>
@@ -151,3 +160,4 @@ setInterval(createHeart, 400);
 
 </body>
 </html>
+
