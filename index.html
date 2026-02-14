@@ -4,7 +4,6 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>For Imup ❤️</title>
-
 <style>
 body {
   margin: 0;
@@ -15,7 +14,6 @@ body {
   color: white;
   overflow: hidden;
 }
-
 .slide {
   display: none;
   height: 100vh;
@@ -24,11 +22,9 @@ body {
   flex-direction: column;
   padding: 20px;
 }
-
 .active {
   display: flex;
 }
-
 button {
   padding: 12px 25px;
   border: none;
@@ -39,16 +35,11 @@ button {
   cursor: pointer;
   margin-top: 20px;
 }
-
-h1 {
-  font-size: 28px;
-}
-
+h1 { font-size: 28px; }
 .heart {
   font-size: 50px;
   animation: beat 1s infinite;
 }
-
 @keyframes beat {
   0% { transform: scale(1); }
   50% { transform: scale(1.2); }
@@ -56,7 +47,6 @@ h1 {
 }
 </style>
 </head>
-
 <body>
 
 <audio id="music" loop>
@@ -64,7 +54,7 @@ h1 {
 </audio>
 
 <div class="slide active">
-  <h1>Hai Imup ❤️</h1>
+  <h1>Happy valentine Imup ❤️</h1>
   <p>Aku bikin ini khusus buat kamu...</p>
   <button onclick="nextSlide()">Klik Aku</button>
 </div>
@@ -78,7 +68,7 @@ h1 {
 <div class="slide">
   <h1>Virtual Hug 🤍</h1>
   <div class="heart">❤️</div>
-  <p>Peluk jauh buat Imup tersayang.</p>
+  <p>Peluk jauh buat Imup .</p>
   <button onclick="nextSlide()">Masih ada lagi...</button>
 </div>
 
@@ -88,6 +78,7 @@ h1 {
   <p>tapi selama ada kamu, semuanya terasa cukup.</p>
   <p>Aku sayang kamu, Imup 🤍</p>
   <div class="heart">❤️</div>
+  <button onclick="restartSlides()">Ulangi ❤️</button>
 </div>
 
 <script>
@@ -96,12 +87,20 @@ let current = 0;
 let music = document.getElementById("music");
 
 function nextSlide() {
+  // Start music on first interaction
+  if (current === 0) music.play();
+
   slides[current].classList.remove("active");
   current++;
   if (current < slides.length) {
     slides[current].classList.add("active");
   }
-  music.play();
+}
+
+function restartSlides() {
+  slides[current].classList.remove("active");
+  current = 0;
+  slides[current].classList.add("active");
 }
 </script>
 
