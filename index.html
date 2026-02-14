@@ -1,141 +1,109 @@
 <!DOCTYPE html>
-<html>
+<html lang="id">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>For Imup 💖</title>
+<title>For Imup ❤️</title>
 
 <style>
-body{
-margin:0;
-height:100vh;
-overflow:hidden;
-font-family:Arial;
-background:linear-gradient(135deg,#ff758c,#ff7eb3,#ffc3a0);
-display:flex;
-justify-content:center;
-align-items:center;
-text-align:center;
-color:white;
+body {
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+  font-family: Arial, sans-serif;
+  text-align: center;
+  color: white;
+  overflow: hidden;
 }
 
-.container{
-max-width:600px;
-padding:20px;
+.slide {
+  display: none;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 20px;
 }
 
-.name{
-font-size:3rem;
-font-weight:bold;
-text-shadow:0 0 15px white;
+.active {
+  display: flex;
 }
 
-button{
-padding:12px 25px;
-font-size:18px;
-border:none;
-border-radius:30px;
-margin:10px;
-cursor:pointer;
+button {
+  padding: 12px 25px;
+  border: none;
+  border-radius: 25px;
+  background: white;
+  color: #ff4d6d;
+  font-size: 16px;
+  cursor: pointer;
+  margin-top: 20px;
 }
 
-#yesBtn{
-background:white;
-color:#ff4d6d;
-font-weight:bold;
+h1 {
+  font-size: 28px;
 }
 
-#noBtn{
-background:transparent;
-border:2px solid white;
-color:white;
-position:absolute;
+.heart {
+  font-size: 50px;
+  animation: beat 1s infinite;
 }
 
-.heart{
-position:absolute;
-font-size:20px;
-animation:float 6s linear infinite;
-}
-
-@keyframes float{
-from{transform:translateY(100vh);}
-to{transform:translateY(-10vh);}
+@keyframes beat {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.2); }
+  100% { transform: scale(1); }
 }
 </style>
 </head>
 
 <body>
 
-<audio id="bgMusic" src="music.mp3"></audio>
+<audio id="music" loop>
+  <source src="lagu.mp3" type="audio/mpeg">
+</audio>
 
-<div class="container">
-<h1>Will you be my Valentine,<br>
-<span class="name">Imup</span>? 💌</h1>
+<div class="slide active">
+  <h1>Hai Imup ❤️</h1>
+  <p>Aku bikin ini khusus buat kamu...</p>
+  <button onclick="nextSlide()">Klik Aku</button>
+</div>
 
-<p>
-Imup, kamu itu alasan kenapa aku senyum sendiri tiap hari 💖
-</p>
+<div class="slide">
+  <h1>Kamu tau ga?</h1>
+  <p>Sejak kenal kamu, hari-hariku jadi beda banget.</p>
+  <button onclick="nextSlide()">Lanjut</button>
+</div>
 
-<button id="yesBtn">YES 💖</button>
-<button id="noBtn">NO 😭</button>
+<div class="slide">
+  <h1>Virtual Hug 🤍</h1>
+  <div class="heart">❤️</div>
+  <p>Peluk jauh buat Imup tersayang.</p>
+  <button onclick="nextSlide()">Masih ada lagi...</button>
+</div>
+
+<div class="slide">
+  <h1>I Love You So Bad</h1>
+  <p>Aku ga tau masa depan gimana,</p>
+  <p>tapi selama ada kamu, semuanya terasa cukup.</p>
+  <p>Aku sayang kamu, Imup 🤍</p>
+  <div class="heart">❤️</div>
 </div>
 
 <script>
+let slides = document.querySelectorAll(".slide");
+let current = 0;
+let music = document.getElementById("music");
 
-const music = document.getElementById("bgMusic");
-
-const noBtn=document.getElementById("noBtn");
-noBtn.addEventListener("mouseover",()=>{
-noBtn.style.left=Math.random()*80+"vw";
-noBtn.style.top=Math.random()*80+"vh";
-});
-
-document.getElementById("yesBtn").addEventListener("click",()=>{
-music.play(); // Musik pasti bunyi setelah klik
-
-const container=document.querySelector(".container");
-
-container.innerHTML=`
-<h1>YAY IMUP 💖</h1>
-<p>Kamu bikin dunia aku lebih berwarna 🥰</p>
-`;
-
-setTimeout(()=>{
-container.innerHTML+=`
-<p style="margin-top:15px;">
-Aku nggak mau cuma valentine-an hari ini aja...
-Aku mau sama kamu lebih lama 🤍
-</p>
-<button id="hugBtn">Peluk aku 🤍</button>
-`;
-
-document.getElementById("hugBtn").addEventListener("click",()=>{
-container.innerHTML=`
-<h1>Virtual Hug 🤗💖</h1>
-<p>
-Terima kasih udah jadi Imup yang manis ✨<br>
-Semoga ini jadi awal cerita kita ya 🤍
-</p>
-`;
-});
-
-},2000);
-});
-
-function createHeart(){
-const heart=document.createElement("div");
-heart.classList.add("heart");
-heart.innerHTML="💖";
-heart.style.left=Math.random()*100+"vw";
-heart.style.fontSize=Math.random()*25+15+"px";
-document.body.appendChild(heart);
-setTimeout(()=>heart.remove(),6000);
+function nextSlide() {
+  slides[current].classList.remove("active");
+  current++;
+  if (current < slides.length) {
+    slides[current].classList.add("active");
+  }
+  music.play();
 }
-setInterval(createHeart,400);
-
 </script>
 
 </body>
 </html>
-
